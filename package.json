@@ -1,13 +1,22 @@
 {
   "name": "bm_search_input",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "description": "基于vue的搜索框(包含历史记录和搜索建议列表)",
+  "private": false,
+  "files": [
+    "packages",
+    "package"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name bm-vlogin --dest package packages/index.js"
   },
+  "style": "package/index.css",
+  "main": "packages/index.js",
   "dependencies": {
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },
