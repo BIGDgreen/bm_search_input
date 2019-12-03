@@ -120,7 +120,3 @@ script中
       }
     }
 ```
-
-### GitHub
-开源地址： [bm_search_input](https://github.com/BigMonkeyyy/bm_search_input.git).
-欢迎star！
