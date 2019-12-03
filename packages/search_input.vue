@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="search_input" ref="search_input" @mouseleave="mouseout">
+        <div class="search_input" ref="search_input" @mouseleave="mouseout" id="search_input_id">
             <div></div>
             <div class="search_bar" @click="focus()">
                 <span>
@@ -45,7 +45,24 @@
                 flag:0
             }
         },
-        props:["isHistory","lists_title","lists_note"],
+        props:{
+            isHistory: {		// 是否需要历史记录
+                type: Boolean,
+                default: true
+            },
+            lists_title:{		 // 搜索建议标题
+                type: Array,
+                default: null
+            },
+            lists_note:{		// 搜索建议备注
+                type: Array,
+                default: null
+            },
+            input_length:{		// 搜索框长度
+                type: String,
+                default: "200px"
+            },
+        },
         computed:{
           hasHistory(){
               if (this.isHistory !== undefined){
@@ -56,6 +73,10 @@
           }
         },
         mounted(){
+            // 动态设置输入框长度
+            // console.log("设置的长度",this.input_length);
+            let search_input_dom = document.getElementById("search_input_id");
+            search_input_dom.style.width = this.input_length;
             //获得历史搜索记录
             let histories = localStorage.getItem('history_lists');
             if ( histories !== "" && histories !== null && histories !== undefined){
@@ -103,9 +124,9 @@
                     localStorage.setItem('history_lists',history_string);
                     //搜索，建议栏显示搜索建议列表
                     this.search();
-                    //搜索完成后加载页面
-                    this.$emit('parent_search',this.search_content);
                 }
+                //搜索完成后加载页面
+                this.$emit('parent_search',this.search_content);
                 this.isFocus = false;
             },
             clear_history(){
@@ -155,11 +176,6 @@
 
 <style scoped>
     .search_input{
-        width: 86%;
-        position: fixed;
-        top: 3%;
-        left: 7%;
-        right: 7%;
         background: #f3f3f3;
         border: .5px solid #999999;
         border-radius: .4rem;
@@ -201,11 +217,13 @@
        align-items: flex-end;
        margin-bottom: .2rem;
        margin-left: 40%;
+       position: relative;
    }
 
    .history_clear{
-       margin-left: 43%;
        font-size: .68rem;
+       position: absolute;
+       right: 4%;
        display: flex;
        flex-direction: row;
    }

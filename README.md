@@ -54,6 +54,16 @@ Vue.component('bm_search_input',bm_search_input);
     搜索建议列表中的备注，不需要可以不传参
     </td>
   </tr>
+   <tr>
+      <td> input_length</td>
+      <td> String </td>
+      <td>
+             200px
+       </td>
+      <td>
+        自定义搜索框长度（单位：px）
+      </td>
+    </tr>
 </table>
 
 
