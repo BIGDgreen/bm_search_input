@@ -16,7 +16,7 @@
   "style": "package/index.css",
   "main": "packages/index.js",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },
